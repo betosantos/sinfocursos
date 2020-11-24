@@ -1,0 +1,44 @@
+
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+
+<div class="col-12">
+  <div class="row">
+    <div class="col-md-10">
+      <h3>Categorias</h3>
+    </div>
+    <div class="col-md-2 align-rigth">
+      <a href="{{ path('categorias_form') }}"><button type="submit" class="btn btn-primary float-right"> Cadastrar </button></a>
+    </div>
+  </div>
+</div>
+<br/>
+<div class="col-12">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Criado</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for categoria in categorias %}
+      <tr>
+        <td>{{ categoria.nome }}</td>
+        <td>{{ categoria.descricao }}</td>
+        <td>{{ categoria.criado|date("d/m/Y") }}</td>
+        <td style="width:10px;">
+          <a href="{{ path('categorias_edit',{'id': categoria.id }) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp;
+          <a href="{{ path('categorias_delete',{'id': categoria.id }) }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
