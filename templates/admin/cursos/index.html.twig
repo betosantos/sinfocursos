@@ -20,7 +20,7 @@
         <th scope="col">Imagem</th>
         <th scope="col">Título</th>
         <th scope="col">Descrição</th>
-        <th scope="col">Criado</th>
+        <th scope="col">Categorias</th>
         <th scope="col">Ações</th>
       </tr>
     </thead>
@@ -31,9 +31,15 @@
         <td>{{ curso.imagem }}</td>
         <td>{{ curso.titulo }}</td>
         <td>{{ curso.descricao }}</td>
-        <td>{{ curso.criado|date("d/m/Y") }}</td>
+        <td>
+          <ul>
+            {% for cat in curso.categorias %}
+            <li> {{ cat.nome }} </li>
+            {% endfor %}
+          </ul>
+        </td>
         <td style="width:10px;">
-          <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp;
+          <a href="{{ path('cursos_edit',{'id': curso.id }) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp;
           <a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a>
         </td>
       </tr>

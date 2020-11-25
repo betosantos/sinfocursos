@@ -21,7 +21,37 @@ class CursosController extends AbstractController
 
     return $this->render('admin/cursos/index.html.twig', compact('cursos'));
   }
-  
+
+
+
+
+  /**
+  * @Route("/cursos/edit/{id}", name="cursos_edit")
+  */
+  public function cursosEdit(Request $request, $id): Response
+  {
+    $curso =  $this->getDoctrine()->getRepository(Curso::class)->find($id);
+    $form = $this->createForm(CursoType::class, $curso);
+
+    $form->handleRequest($request);
+    if ($form->isSubmitted() && $form->isValid()) {
+      $curso = $form->getData();
+      $curso->setCriado(new \DateTime('now'));
+
+      $entityManager = $this->getDoctrine()->getManager();
+      $entityManager->persist($curso);
+      $entityManager->flush();
+
+      return $this->redirectToRoute('cursos');
+    }
+
+    return $this->render('admin/cursos/form.html.twig', [
+      'form' => $form->createView(),
+    ]);
+
+  }
+
+
 
 
   /**
