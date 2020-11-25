@@ -16,7 +16,7 @@ class CategoriasController extends AbstractController
   */
   public function categorias(): Response
   {
-    $categorias = $product = $this->getDoctrine()->getRepository(Categoria::class)->findall();
+    $categorias =  $this->getDoctrine()->getRepository(Categoria::class)->findBy(array(),array('nome' => 'ASC'));
 
     return $this->render('admin/categorias/index.html.twig', compact('categorias'));
   }
@@ -84,7 +84,7 @@ class CategoriasController extends AbstractController
       $entityManager->persist($categoria);
       $entityManager->flush();
 
-      return $this->redirectToRoute('categorias_form');
+      return $this->redirectToRoute('categorias');
     }
 
     return $this->render('admin/categorias/form.html.twig', [

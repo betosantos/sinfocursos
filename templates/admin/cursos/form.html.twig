@@ -1,0 +1,35 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+
+<div class="col-12">
+  <div class="row">
+    <div class="col-md-10">
+      <h3>Cadastrar Cursos </h3>
+    </div>
+    <!-- <div class="col-md-2 align-rigth">
+      <button type="submit" class="btn btn-primary float-right"> Cadastrar </button>
+    </div> -->
+  </div>
+</div>
+<br/>
+
+{{ form_start(form) }}
+
+{{ form_label(form.titulo) }}
+{{ form_widget(form.titulo) }}
+
+{{ form_label(form.descricao) }}
+{{ form_widget(form.descricao) }}
+
+{{ form_label(form.imagem) }}
+{{ form_widget(form.imagem) }}
+
+{{ form_label(form.categorias) }}
+{{ form_widget(form.categorias) }}
+
+<br />
+<button type="submit" class="btn btn-primary">Cadastrar</button>
+{{ form_end(form) }}
+
+{% endblock %}
