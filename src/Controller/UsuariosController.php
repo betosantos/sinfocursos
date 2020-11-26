@@ -27,7 +27,7 @@ class UsuariosController extends AbstractController
       $usuario->setPassword($passwordEncoder);
       $usuario->setCriado(new \DateTime('now'));
       $usuario->setStatus(1);
-      $usuario->setRoles('ROLE_USER');
+      $usuario->setRoles(array('ROLE_USER'));
 
       $entityManager = $this->getDoctrine()->getManager();
       $entityManager->persist($usuario);
@@ -42,9 +42,7 @@ class UsuariosController extends AbstractController
   }
 
 
-  /**
-  * @Route("/logout", name="logout")
-  */
+
   public function logout()
   {
     return $this->render('usuarios/login.html.twig');
@@ -52,9 +50,7 @@ class UsuariosController extends AbstractController
 
 
 
-  /**
-  * @Route("/login", name="login")
-  */
+
   public function login()
   {
     return $this->render('usuarios/login.html.twig');

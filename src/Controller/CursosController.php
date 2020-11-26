@@ -8,12 +8,17 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Curso;
 use App\Form\CursoType;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
-
+/**
+* @Route("admin/", name="")
+* @IsGranted("ROLE_ADMIN")
+*/
 class CursosController extends AbstractController
 {
   /**
-  * @Route("/cursos", name="cursos")
+  * @Route("cursos", name="cursos")
   */
   public function cursos(): Response
   {
@@ -26,7 +31,7 @@ class CursosController extends AbstractController
 
 
   /**
-  * @Route("/cursos/edit/{id}", name="cursos_edit")
+  * @Route("cursos/edit/{id}", name="cursos_edit")
   */
   public function cursosEdit(Request $request, $id): Response
   {
@@ -55,7 +60,7 @@ class CursosController extends AbstractController
 
 
   /**
-  * @Route("/cursos/form", name="cursos_form")
+  * @Route("cursos/form", name="cursos_form")
   */
   public function cursosForm(Request $request): Response
   {

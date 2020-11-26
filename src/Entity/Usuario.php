@@ -44,10 +44,12 @@ class Usuario implements UserInterface
   */
   private $status;
 
-  /**
-  * @ORM\Column(type="string", length=255)
-  */
-  private $roles;
+
+
+  public function __construc(){
+    $this->roles = new ArrayCollection();
+  }
+
 
   public function getId(): ?int
   {
@@ -132,23 +134,26 @@ class Usuario implements UserInterface
   {
     $roles = json_decode($this->roles, true);
     $roles[] = 'ROLE_USER';
-
+    
     return array_unique($roles);
   }
 
-  // public function getRoles()
-  // {
-  //   $roles = $this->roles;
-  //   $roles[] = 'ROLE_USER';
-  //   return roles;
-  // }
 
-  public function setRoles(string $roles): self
+
+
+  /**
+  * @ORM\Column(type="string", length=255)
+  */
+  private $roles;
+
+  public function setRoles($roles)
   {
     $this->roles = $roles;
 
     return $this;
   }
+
+
 
 
 }

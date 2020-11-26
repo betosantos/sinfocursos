@@ -8,11 +8,17 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Categoria;
 use App\Form\CategoriaType;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+/**
+* @Route("admin/", name="")
+* @IsGranted("ROLE_ADMIN")
+*/
 class CategoriasController extends AbstractController
 {
   /**
-  * @Route("/categorias", name="categorias")
+  * @Route("categorias", name="categorias")
   */
   public function categorias(): Response
   {

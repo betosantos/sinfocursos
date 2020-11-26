@@ -83,15 +83,16 @@
     }
   }
   </style>
-
 </head>
+
 <body class="text-center">
   <form class="form-signin" method="POST" action="{{ path('login') }}">
     <img class="mb-4" src="https://getbootstrap.com/docs/4.5/assets/img/favicons/apple-touch-icon.png" alt="" width="72" height="72">
     <small id="emailHelp" class="form-text text-muted">Informe o Email de Cadastro e senha para acessar.</small>
     <div class="form-group">
       <label for="email">Email </label>
-      <input type="email" class="form-control" id="_email" name="_username" aria-describedby="emailHelp">
+      <!-- <input type="email" class="form-control" id="_email" name="_username" aria-describedby="emailHelp"> -->
+      <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
     </div>
     <div class="form-group">
       <label for="password">Senha</label>
@@ -100,7 +101,6 @@
 
     <button type="submit" class="btn btn-primary btn-block">Acessar</button>
   </form>
-
 
 </body>
 </html>
