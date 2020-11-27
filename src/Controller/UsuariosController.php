@@ -27,7 +27,8 @@ class UsuariosController extends AbstractController
       $usuario->setPassword($passwordEncoder);
       $usuario->setCriado(new \DateTime('now'));
       $usuario->setStatus(1);
-      $usuario->setRoles(array('ROLE_USER'));
+      $usuario->setRoles('ROLE_USER');
+      // $usuario->setRoles(array('ROLE_USER'));
 
       $entityManager = $this->getDoctrine()->getManager();
       $entityManager->persist($usuario);
