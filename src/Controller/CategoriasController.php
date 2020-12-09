@@ -62,7 +62,8 @@ class CategoriasController extends AbstractController
       $entityManager->persist($categoria);
       $entityManager->flush();
 
-      return $this->redirectToRoute('categorias_form');
+      $this->addFlash('success',"Categoria Atualizada com Sucesso!!");
+      return $this->redirectToRoute('categorias');
     }
 
     return $this->render('admin/categorias/form.html.twig', [
@@ -90,6 +91,7 @@ class CategoriasController extends AbstractController
       $entityManager->persist($categoria);
       $entityManager->flush();
 
+      $this->addFlash('success',"Categoria Cadastrada com Sucesso!!");
       return $this->redirectToRoute('categorias');
     }
 

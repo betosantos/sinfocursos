@@ -5,6 +5,17 @@
 
 <div class="col-12">
   <div class="row">
+
+
+    {% for message in app.flashes('success') %}
+    <div class="col-md-12">
+      <div class="alert alert-success" role="alert">
+        {{ message }}
+      </div>
+    </div>
+    {% endfor %}
+
+
     <div class="col-md-10">
       <h3>Categorias</h3>
     </div>
@@ -15,7 +26,7 @@
 </div>
 <br/>
 <div class="col-12">
-  <table class="table table-hover">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">Nome</th>
@@ -32,8 +43,8 @@
         <td>{{ categoria.descricao }}</td>
         <td>{{ categoria.criado|date("d/m/Y") }}</td>
         <td style="width:10px;">
-          <a href="{{ path('categorias_edit',{'id': categoria.id }) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp;
-          <a href="{{ path('categorias_delete',{'id': categoria.id }) }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+          <a href="{{ path('categorias_edit',{'id': categoria.id }) }}"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>&nbsp;
+          <a href="javascript:void(0)" onclick="if(confirm('Deseja Realmente Excluir o Registro??')){window.location='{{ path('categorias_delete', {'id': categoria.id }) }}';}" style="color:red;"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
         </td>
       </tr>
       {% endfor %}

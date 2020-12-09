@@ -6,6 +6,7 @@ use App\Entity\Curso;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class CursoType extends AbstractType
 {
@@ -14,7 +15,8 @@ class CursoType extends AbstractType
         $builder
             ->add('titulo')
             ->add('descricao')
-            ->add('imagem')
+            ->add('imageFile', FileType::class,['required' => false])
+            // ->add('imagem')
             // ->add('criado')
             ->add('categorias')
         ;

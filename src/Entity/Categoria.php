@@ -39,6 +39,10 @@ class Categoria
   */
   private $cursos;
 
+
+
+  
+
   public function __construct()
   {
     $this->cursos = new ArrayCollection();
@@ -114,7 +118,7 @@ class Categoria
 
   public function __toString()
   {
-    return (string) $this->nome; 
+    return (string) $this->nome;
   }
 
 

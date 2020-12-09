@@ -34,6 +34,7 @@ class UsuariosController extends AbstractController
       $entityManager->persist($usuario);
       $entityManager->flush();
 
+      $this->addFlash('success',"Usuário Cadastrado com Sucesso, utilize o E-mail e Senha de cadastro no Login de acesso!!");
       return $this->redirectToRoute('registro');
     }
 

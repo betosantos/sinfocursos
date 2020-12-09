@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\UsuarioRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -21,16 +22,19 @@ class Usuario implements UserInterface
 
   /**
   * @ORM\Column(type="string", length=255)
+  * @Assert\NotBlank()
   */
   private $nome;
 
   /**
   * @ORM\Column(type="string", length=255)
+  * @Assert\NotBlank()
   */
   private $email;
 
   /**
   * @ORM\Column(type="string", length=255)
+  * @Assert\NotBlank()
   */
   private $password;
 
@@ -134,7 +138,7 @@ class Usuario implements UserInterface
   {
     $roles = json_decode($this->roles, true);
     $roles[] = 'ROLE_USER';
-    
+
     return array_unique($roles);
   }
 

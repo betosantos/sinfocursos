@@ -20,7 +20,7 @@
         <th scope="col">Imagem</th>
         <th scope="col">Título</th>
         <th scope="col">Descrição</th>
-        <th scope="col">Categorias</th>
+        <th scope="col" class="text-center">Categorias</th>
         <th scope="col">Ações</th>
       </tr>
     </thead>
@@ -28,7 +28,13 @@
     <tbody>
       {% for curso in cursos %}
       <tr>
-        <td>{{ curso.imagem }}</td>
+        <td>
+          {% if curso.imagem %}
+            <img src="/imagens/cursos/{{ curso.imagem }}" width="120" height="100" />
+          {% else %}
+            <img src="{{ asset('/imagens/noimagem.png') }}" width="120" height="100" />
+          {% endif %}
+        </td>
         <td>{{ curso.titulo }}</td>
         <td>{{ curso.descricao }}</td>
         <td>
@@ -38,7 +44,7 @@
             {% endfor %}
           </ul>
         </td>
-        <td style="width:10px;">
+        <td style="width:15px;">
           <a href="{{ path('cursos_edit',{'id': curso.id }) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp;
           <a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a>
         </td>

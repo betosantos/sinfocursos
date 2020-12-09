@@ -1,0 +1,7 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+       cursos:
+           uri_prefix: /imagens/cursos
+           upload_destination: '%kernel.project_dir%/public/imagens/cursos'

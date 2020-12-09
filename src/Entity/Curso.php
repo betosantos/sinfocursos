@@ -6,9 +6,12 @@ use App\Repository\CursoRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
 * @ORM\Entity(repositoryClass=CursoRepository::class)
+* @Vich\Uploadable
 */
 class Curso
 {
@@ -28,6 +31,11 @@ class Curso
   * @ORM\Column(type="text", nullable=true)
   */
   private $descricao;
+
+  /**
+  * @Vich\UploadableField(mapping="cursos", fileNameProperty="imagem")
+  */
+  private $imageFile;
 
   /**
   * @ORM\Column(type="string", length=255, nullable=true)
@@ -128,4 +136,23 @@ class Curso
 
     return $this;
   }
+
+
+  public function getImageFile(): ?File
+  {
+    return $this->imageFile;
+  }
+
+  public function setImageFile(?File $imageFile = null): self
+  {
+    $this->imageFile = $imageFile;
+    return $this;
+
+    // if (null !== $imageFile) {
+    //   // It is required that at least one field changes if you are using doctrine
+    //   // otherwise the event listeners won't be called and the file is lost
+    //   $this->updatedAt = new \DateTimeImmutable();
+    // }
+  }
+
 }
