@@ -34,8 +34,9 @@ class FrontController extends AbstractController
     // Pegar todos os registros da Categoria de Novidade e exibir na Homepage
     $categoriaNov = $this->getDoctrine()->getRepository(Categoria::class)->find(5);
     $categoriaPhp = $this->getDoctrine()->getRepository(Categoria::class)->find(1);
+    $cursos = $this->getDoctrine()->getRepository(Curso::class)->findall();
 
-    return $this->render('front/index.html.twig', compact('categoriaNov','categoriaPhp'));
+    return $this->render('front/index.html.twig', compact('categoriaNov','categoriaPhp','cursos'));
   }
 
 
