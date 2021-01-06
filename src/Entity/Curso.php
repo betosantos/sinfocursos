@@ -52,6 +52,16 @@ class Curso
   */
   private $categorias;
 
+  /**
+   * @ORM\Column(type="float")
+   */
+  private $preco;
+
+  /**
+   * @ORM\Column(type="string", length=255, nullable=true)
+   */
+  private $url;
+
 
 
 
@@ -153,6 +163,30 @@ class Curso
     //   // otherwise the event listeners won't be called and the file is lost
     //   $this->updatedAt = new \DateTimeImmutable();
     // }
+  }
+
+  public function getPreco(): ?float
+  {
+      return $this->preco;
+  }
+
+  public function setPreco(float $preco): self
+  {
+      $this->preco = $preco;
+
+      return $this;
+  }
+
+  public function getUrl(): ?string
+  {
+      return $this->url;
+  }
+
+  public function setUrl(?string $url): self
+  {
+      $this->url = $url;
+
+      return $this;
   }
 
 }

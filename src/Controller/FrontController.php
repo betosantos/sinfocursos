@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Categoria;
 use App\Entity\Curso;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 class FrontController extends AbstractController
@@ -39,6 +41,19 @@ class FrontController extends AbstractController
     return $this->render('front/index.html.twig', compact('categoriaNov','categoriaPhp','cursos'));
   }
 
+
+
+  /**
+  * @Route("/comacesso/{id}", name="comacesso")
+  */
+  public function comAcesso($id): Response
+  {
+    $curso = $this->getDoctrine()->getRepository(Curso::class)->find($id);
+
+    return $this->render('front/comacesso.html.twig',[
+        'curso' => $curso
+    ]);
+  }
 
 
 

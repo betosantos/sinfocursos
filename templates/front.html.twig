@@ -27,9 +27,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
+          {% if is_granted('ROLE_USER') %}
+            <li class="nav-item">
+              <a class="nav-link" style="color:#E0E1E2;">Usuário: {{ app.user.nome|capitalize }}</a>
+            </li>
+          {% endif %}
+          <!-- <li class="nav-item active">
             <a class="nav-link" style="color:#E0E1E2;" href="{{ path('front') }}">Home</a>
-          </li>
+          </li> -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#E0E1E2;">Categorias</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -37,13 +42,19 @@
               <a class="dropdown-item" href="#">Novidades</a>
               <a class="dropdown-item" href="#">Microsoft</a>
             </div>
-          </li>          
+          </li>
           <li class="nav-item">
             <a class="nav-link" style="color:#E0E1E2;" href="{{ path('registro') }}">Registro</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" style="color:#E0E1E2;" href="{{ path('app_login') }}">Login</a>
           </li>
+
+          {% if is_granted('ROLE_USER') %}
+            <li class="nav-item">
+              <a class="nav-link" style="color:#E0E1E2;" href="{{ path('app_logout') }}">Sair</a>
+            </li>
+          {% endif %}
 
         </ul>
 
@@ -54,20 +65,20 @@
 
 
   {% block body %}
-  {% endblock %}
+{% endblock %}
 
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark" style="margin-top:40px;">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+<!-- Footer -->
+<footer class="py-5 bg-dark" style="margin-top:40px;">
+  <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+  </div>
+  <!-- /.container -->
+</footer>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="{{ asset('front/vendor/jquery/jquery.min.js') }}"></script>
-  <script src="{{ asset('front/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- Bootstrap core JavaScript -->
+<script src="{{ asset('front/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('front/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 </body>
 </html>

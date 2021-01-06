@@ -16,8 +16,10 @@ class CursoType extends AbstractType
             ->add('titulo')
             ->add('descricao')
             ->add('imageFile', FileType::class,['required' => false])
+            ->add('url')
             // ->add('imagem')
             // ->add('criado')
+            ->add('preco')
             ->add('categorias')
         ;
     }

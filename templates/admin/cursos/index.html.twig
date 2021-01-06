@@ -21,6 +21,7 @@
         <th scope="col">Título</th>
         <th scope="col">Descrição</th>
         <th scope="col" class="text-center">Categorias</th>
+        <th scope="col">Preço</th>
         <th scope="col">Ações</th>
       </tr>
     </thead>
@@ -43,7 +44,8 @@
               <li> {{ cat.nome }} </li>
             {% endfor %}
           </ul>
-        </td>
+        </td>        
+        <td>R$ {{ curso.preco|number_format(2, '.', ',') }}</td>
         <td style="width:15px;">
           <a href="{{ path('cursos_edit',{'id': curso.id }) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp;
           <a href="#"><i class="fa fa-trash" aria-hidden="true"></i></a>
