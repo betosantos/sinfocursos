@@ -69,7 +69,7 @@
 
         <div class="card-footer">
           <!-- <a href="#" class="btn btn-primary">Detalhes</a>         -->
-          <p> Preço: R$ {{ nov.preco|number_format(2, '.', ',') }} </p>
+          <p> Preço: R$ {{ nov.preco|number_format(2, ',', '.') }} </p>
         </div>
       </div>
     </div>
@@ -97,13 +97,44 @@
         </div>
         <div class="card-footer">
           <!-- <a href="#" class="btn btn-primary">Detalhes</a> -->
-          <p> Preço: R$ {{ php.preco|number_format(2, '.', ',') }} </p>          
+          <p> Preço: R$ {{ php.preco|number_format(2, '.', ',') }} </p>
         </div>
       </div>
     </div>
     {% endfor %}
   </div>
   <!-- /.row -->
+
+
+  <!-- Page Features -->
+  <div class="" style="margin-top:70px;">
+    <h2 class="card-title">Microsoft </h2>
+    <hr>
+  </div>
+
+<div class="row text-center">
+    {% for microsoft in catMicrosoft.cursos %}
+    <div class="col-lg-3 col-md-6 mb-4">
+      <div class="card h-100">
+        <!-- <img class="card-img-top" src="http://placehold.it/500x325" alt=""> -->
+        <img class="card-img-top" src="{{ asset('imagens/cursos/' ~ microsoft.imagem) }}" alt="" width="253" height="169">
+        <div class="card-body">
+          <a href="{{ path('detalhes',{'id':microsoft.id}) }}">
+            <h4 class="card-title">{{ microsoft.titulo }}</h4>
+          </a>
+          <p class="card-text">{{ microsoft.descricao }}</p>
+        </div>
+        <div class="card-footer">
+          <!-- <a href="#" class="btn btn-primary">Detalhes</a> -->
+          <p> Preço: R$ {{ microsoft.preco|number_format(2, '.', ',') }} </p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <!-- /.row -->
+
+
 
 
 </div>

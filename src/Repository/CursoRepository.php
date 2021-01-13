@@ -36,6 +36,19 @@ class CursoRepository extends ServiceEntityRepository
 }
 */
 
+  public function findCursoToCartById(int $id)
+  {
+    return $this->createQueryBuilder('p')
+                ->andWhere('p.id = :id')
+                ->setParameter('id', $id)
+                ->select('p.id', 'p.titulo', 'p.preco', 'p.descricao', 'p.url')    
+                ->getQuery()
+                ->getOneOrNullResult();
+  }
+
+
+
+
 /*
 public function findOneBySomeField($value): ?Curso
 {

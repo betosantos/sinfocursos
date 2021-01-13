@@ -21,12 +21,17 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="{{ path('front') }}">Site Cursos</a>
+      <a class="navbar-brand" href="{{ path('front') }}">Site Cursos</a>      
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+          <form class="form-inline mt-2 mt-md-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Localizar Cursos" aria-label="Buscar">
+            <button class="btn btn-primary my-2 my-sm-0" type="submit">Buscar</button>
+          </form>
+
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto">      
           {% if is_granted('ROLE_USER') %}
             <li class="nav-item">
               <a class="nav-link" style="color:#E0E1E2;">Usuário: {{ app.user.nome|capitalize }}</a>
@@ -54,11 +59,9 @@
             <li class="nav-item">
               <a class="nav-link" style="color:#E0E1E2;" href="{{ path('app_logout') }}">Sair</a>
             </li>
-          {% endif %}
+          {% endif %}    
 
         </ul>
-
-
       </div>
     </div>
   </nav>

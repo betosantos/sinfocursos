@@ -35,7 +35,15 @@ body {
       <p>{{ curso.descricao }}</p>
 
       <h3 class="my-3">Preço</h3>
-      <p>R$ {{ curso.preco|number_format(2, '.', ',') }}</p>
+      <p>R$ {{ curso.preco|number_format(2, ',', '.') }}</p>
+
+      <form method="POST" action="{{ path('front_cart_add', {item: curso.id}) }}">
+          <div class="form-group">
+            <h3>Quantidade</h3>
+            <input type="number" class="form-control col-3" name="quantidade" id="quantidade" value="1">
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg">Comprar</button>
+        </form>
 
       <h3 class="my-3">Categorias</h3>
       <ul>
@@ -44,7 +52,7 @@ body {
         {% endfor %}
       </ul>
 
-    </div>
+    </div>   
 
   </div>
 

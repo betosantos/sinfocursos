@@ -28,6 +28,17 @@ class CursosController extends AbstractController
   }
 
 
+  /**
+  * @Route("", name="admin_index")
+  */
+  public function cursos_index(): Response
+  {
+    $cursos =  $this->getDoctrine()->getRepository(Curso::class)->findall();
+
+    return $this->render('admin/cursos/index.html.twig', compact('cursos'));
+  }
+
+
 
 
   /**
